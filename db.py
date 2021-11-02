@@ -21,7 +21,7 @@ def create_database(cnx,cursor):
         print("Failed creating database: {}".format(err))
         exit(1)
     print ("database created")
-    print (TABLES)
+
     for key in TABLES:
         print(key, '->', TABLES[key])
     try:
@@ -34,10 +34,10 @@ def create_database(cnx,cursor):
             print(err)
             exit(1)
     print  ("creating tables"    )
-
+    print (TABLES["key"])
 
     try:
-        print("Creating table {}: ".format(name))
+        
         cursor.execute(TABLES["key"])
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
