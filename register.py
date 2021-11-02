@@ -32,9 +32,8 @@ def login():
 
             cnx = mysql.connector.connect(user='root', password='my-secret-pw',host='mysql',)
         cursor = cnx.cursor()
-        insert_user(cnx,cursor,username,api["access_token"])
-        print api["access_token"]
-        return api["access_token"]
+        insert_user(cnx,cursor,username,password)
+    
         if request.form['username'] != app.config['USERNAME']:
             error = 'Invalid username'
         elif request.form['password'] != app.config['PASSWORD']:
