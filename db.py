@@ -34,17 +34,18 @@ def create_database(cnx,cursor):
             print(err)
             exit(1)
     print  ("creating tables"    )
-    for name, ddl in TABLES.iteritems():
-        try:
-            print("Creating table {}: ".format(name))
-            cursor.execute(ddl)
-        except mysql.connector.Error as err:
-            if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
-                print("already exists.")
-            else:
-                print(err.msg)
+
+
+    try:
+        print("Creating table {}: ".format(name))
+        cursor.execute(TABLES["key"])
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
+            print("already exists.")
         else:
-            print("OK")
+            print(err.msg)
+    else:
+        print("OK")
 
     cursor.close()
     cnx.close()
