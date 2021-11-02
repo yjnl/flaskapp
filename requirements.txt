@@ -1,5 +1,5 @@
 db
 requests
 flask
-mysql-connector
+mysql-connector-python
 mysql
