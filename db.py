@@ -21,6 +21,7 @@ def create_database(cnx,cursor):
         print("Failed creating database: {}".format(err))
         exit(1)
     print ("database created")
+    print (TABLES)
     try:
         cnx.database = DB_NAME
     except mysql.connector.Error as err:
