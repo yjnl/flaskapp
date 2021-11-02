@@ -1,5 +1,5 @@
 
-import db
+import db import *
 from datetime import *
 import time
 import sys
