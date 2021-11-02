@@ -10,7 +10,7 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 app = Flask(__name__)
 app.debug = True
-cnx = mysql.connector.connect(user='root', password='dacjd156n.',host='some-mysql',)
+cnx = mysql.connector.connect(user='root', password='dacjd156n.',host='some-mysql')
 cursor = cnx.cursor()
 create_database(cnx,cursor)
 
@@ -29,7 +29,7 @@ def login():
         username= request.form['username']
         password= request.form['password']
 
-        cnx = mysql.connector.connect(user='root', password='dacjd156n.',host='mysql',)
+        cnx = mysql.connector.connect(user='root', password='dacjd156n.',host='some-mysql')
         cursor = cnx.cursor()
         insert_user(cnx,cursor,username,password)
 
