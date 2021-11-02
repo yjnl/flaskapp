@@ -1,4 +1,6 @@
-FROM python:2-onbuild
+FROM python:3.9
+RUN pip install --upgrade pip
+RUN pip install -r /home/requirements.txt
 COPY *.py /home/
 COPY templates/*.* /home/templates/
 ENTRYPOINT ["python"]
