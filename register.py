@@ -33,7 +33,7 @@ def login():
         cursor = cnx.cursor()
         insert_user(cnx,cursor,username,password)
 
-        return redirect(url_for('show_entries'))
+        return redirect(url_for('register'))
     return render_template('login.html', error=error)
 
 if __name__ == '__main__':
