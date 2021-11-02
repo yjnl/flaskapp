@@ -22,7 +22,7 @@ def create_database(cnx,cursor):
         exit(1)
     print ("database created")
     try:
-		cnx.database = DB_NAME
+	    cnx.database = DB_NAME
     except mysql.connector.Error as err:
 		if err.errno == errorcode.ER_BAD_DB_ERROR:
 			create_database(cursor)
@@ -30,7 +30,7 @@ def create_database(cnx,cursor):
 		else:
 			print(err)
 			exit(1)
-    print  ("creating tables"	)	
+    print  ("creating tables"	)
     for name, ddl in TABLES.iteritems():
 		try:
 			print("Creating table {}: ".format(name))
