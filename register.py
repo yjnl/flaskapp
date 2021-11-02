@@ -33,9 +33,6 @@ def login():
         cursor = cnx.cursor()
         insert_user(cnx,cursor,username,password)
 
-
-        
-        flash('You were logged in')
         return redirect(url_for('show_entries'))
     return render_template('login.html', error=error)
 
