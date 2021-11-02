@@ -1,5 +1,5 @@
 
-from db import *
+
 from datetime import *
 import time
 import sys
@@ -45,4 +45,4 @@ def login():
     return render_template('login.html', error=error)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0',port="5000")
