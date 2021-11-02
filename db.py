@@ -22,36 +22,36 @@ def create_database(cnx,cursor):
         exit(1)
     print ("database created")
     try:
-	    cnx.database = DB_NAME
+        cnx.database = DB_NAME
     except mysql.connector.Error as err:
-		if err.errno == errorcode.ER_BAD_DB_ERROR:
-			create_database(cursor)
-			cnx.database = DB_NAME
-		else:
-			print(err)
-			exit(1)
-    print  ("creating tables"	)
+        if err.errno == errorcode.ER_BAD_DB_ERROR:
+            create_database(cursor)
+            cnx.database = DB_NAME
+        else:
+            print(err)
+            exit(1)
+    print  ("creating tables"    )
     for name, ddl in TABLES.iteritems():
-		try:
-			print("Creating table {}: ".format(name))
-			cursor.execute(ddl)
-		except mysql.connector.Error as err:
-			if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
-				print("already exists.")
-			else:
-				print(err.msg)
-		else:
-			print("OK")
+        try:
+            print("Creating table {}: ".format(name))
+            cursor.execute(ddl)
+        except mysql.connector.Error as err:
+            if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
+                print("already exists.")
+            else:
+                print(err.msg)
+        else:
+            print("OK")
 
     cursor.close()
     cnx.close()
 
 def insert_user(cnx,cursor,username,key):
-	add_user = ("INSERT INTO AccessKeys.AccessKey "
+    add_user = ("INSERT INTO AccessKeys.AccessKey "
                "(username,keynum) "
                "VALUES (%s, %s)")
-	data_user=(username,key)
-	cursor.execute(add_user,data_user)
-	cnx.commit()
-	cursor.close()
-	cnx.close()
+    data_user=(username,key)
+    cursor.execute(add_user,data_user)
+    cnx.commit()
+    cursor.close()
+    cnx.close()
