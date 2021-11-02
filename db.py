@@ -22,6 +22,8 @@ def create_database(cnx,cursor):
         exit(1)
     print ("database created")
     print (TABLES)
+    for key in TABLES:
+        print(key, '->', TABLES[key])
     try:
         cnx.database = DB_NAME
     except mysql.connector.Error as err:
