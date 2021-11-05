@@ -5,5 +5,5 @@ RUN pip install -r /home/requirements.txt
 COPY *.py /home/
 COPY templates/*.* /home/templates/
 ENTRYPOINT ["python"]
-CMD ["/home/register.py" ]
+CMD ["/home/catalogue.py" ]
 EXPOSE 5000
