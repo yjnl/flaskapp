@@ -36,7 +36,7 @@ def sub_page():
       return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
     jResp = response.json()
     print (jResp)
-    return 'Sub Page'+jResp+response.status_code
+    return 'Sub Page'+response.status_code
 
 @app.route('/register', methods=['GET', 'POST'])
 def login():
