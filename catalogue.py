@@ -36,7 +36,10 @@ def sub_page():
       return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
     jResp = response.json()
     print (jResp)
-    return 'Sub Page'+json.dumps(jResp,indent=4,sort_keys=True)
+    html="<ul>"
+    for key,val in jResp.items():
+        html=html+"<li>"+val+"</li>"
+    return html
 
 @app.route('/register', methods=['GET', 'POST'])
 def login():
