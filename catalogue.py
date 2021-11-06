@@ -31,10 +31,10 @@ def sub_page():
     # exit if status code is not ok
     if response.status_code != 200:
       print("Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message']))
-      sys.exit()
+      return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
     jResp = response.json()
     print (jResp)
-    return 'Sub Page'
+    return 'Sub Page'+jResp
 
 @app.route('/register', methods=['GET', 'POST'])
 def login():
