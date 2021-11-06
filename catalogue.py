@@ -5,6 +5,7 @@ import time
 import sys
 import mysql.connector
 import json
+import requests
 # First we set our credentials
 
 from flask import Flask, request, session, g, redirect, url_for, abort, \
@@ -32,6 +33,7 @@ def sub_page():
       print("Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message']))
       sys.exit()
     jResp = response.json()
+    print (jResp)
     return 'Sub Page'
 
 @app.route('/register', methods=['GET', 'POST'])
