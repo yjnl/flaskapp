@@ -35,13 +35,13 @@ def sub_page():
       print("Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message']))
       return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
     jResp = response.json()
-
+    html="<p>"+jResp["video"]+"</p>"
     html=json.dumps(jResp,indent=4,sort_keys=True)+"<ul>"
 
     for key,val in jResp:
         for val2 in key:
             html=html+"<li>"+val2+"</li>"
-    return html
+    return html+"</ul>"
 
 @app.route('/register', methods=['GET', 'POST'])
 def login():
