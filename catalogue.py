@@ -39,7 +39,7 @@ def sub_page():
     html="<ul>"
 
     for key,val in jResp:
-        for val2 in key
+        for val2 in key:
             html=html+"<li>"+val2+"</li>"
     return html
 
