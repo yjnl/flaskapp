@@ -36,7 +36,7 @@ def sub_page():
       return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
     jResp = response.json()
 
-    html="<ul>"
+    html=json.dumps(jResp,indent=4,sort_keys=True)+"<ul>"
 
     for key,val in jResp:
         for val2 in key:
