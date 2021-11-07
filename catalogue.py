@@ -39,8 +39,8 @@ def sub_page():
     html="<ul>"
 
     for key,val in jResp:
-        
-       html=html+"<li>"+val["server"]+"</li>"
+
+       html=html+"<li>"+json.dumps(val,indent=4,sort_keys=True)+"</li>"
     return html
 
 @app.route('/register', methods=['GET', 'POST'])
