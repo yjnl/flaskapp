@@ -39,7 +39,8 @@ def sub_page():
     html="<ul>"
 
     for key,val in jResp:
-        html=html+"<li>"+key+" "+val+"</li>"
+        for val2 in val:
+            html=html+"<li>"+val2+"</li>"
     return html
 
 @app.route('/register', methods=['GET', 'POST'])
