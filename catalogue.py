@@ -1,9 +1,9 @@
 
-from db import *
+
 from datetime import *
 import time
 import sys
-import mysql.connector
+
 import json
 import requests
 # First we set our credentials
@@ -12,17 +12,14 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 app = Flask(__name__)
 app.debug = True
-cnx = mysql.connector.connect(user='root', password='dacjd156n.',host='some-mysql')
-cursor = cnx.cursor()
-create_database(cnx,cursor)
 
 @app.route('/')
 def hello_world():
     return 'Hello World!'
 
-@app.route('/Sub')
+@app.route('/Cat')
 def sub_page():
-    url = "http://35.198.152.126/myflix/videos"
+    url = "http://104.197.158.173/myflix/videos"
     headers = {}
     payload = json.dumps({ })
 
@@ -35,27 +32,28 @@ def sub_page():
       print("Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message']))
       return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
     jResp = response.json()
-    html="<p>"+jResp["video"]+"</p>"
-    html=json.dumps(jResp,indent=4,sort_keys=True)+"<ul>"
+    print (type(jResp))
+    html="<h2> Your Videos</h2>"
+    for index in jResp:
+       #print (json.dumps(index))
+       print ("----------------")
+       for key in index:
 
-    for key,val in jResp:
-        for val2 in key:
-            html=html+"<li>"+val2+"</li>"
-    return html+"</ul>"
+           if (key !="_id"):
+              print (index[key])
+              for key2 in index[key]:
+                  print (key2,index[key][key2])
+                  if (key2=="Name"):
+                      name=index[key][key2]
+                  if (key2=="thumb"):
+                      thumb=index[key][key2]
+              html=html+"<h3>"+name+"</h3>"
+              html=html+'<img src="http://34.88.5.81/pics/'+thumb+'">'
+                      
+              print("=======================")
 
-@app.route('/register', methods=['GET', 'POST'])
-def login():
-    error = None
-    if request.method == 'POST':
-        username= request.form['username']
-        password= request.form['password']
+    return html
 
-        cnx = mysql.connector.connect(user='root', password='dacjd156n.',host='some-mysql')
-        cursor = cnx.cursor()
-        insert_user(cnx,cursor,username,password)
-
-        return redirect(url_for('login'))
-    return render_template('login.html', error=error)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port="5000")
+    app.run(host='0.0.0.0',port="80")
