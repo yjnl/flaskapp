@@ -17,9 +17,22 @@ app.debug = True
 def hello_world():
     return 'Hello World!'
 
+@app.route('/Video/<video>')
+def video_page(video):
+    print (video)
+    url = "http://34.173.227.154/myflix/videos"
+    headers = {}
+    payload = json.dumps({ })
+    print (request.endpoint)
+    return 'welcome %s' % video
+
+@app.route('/dashboard/<name>')
+def dashboard(name):
+   return 'welcome %s' % name
+
 @app.route('/Cat')
-def sub_page():
-    url = "http://104.197.158.173/myflix/videos"
+def cat_page():
+    url = "http://34.173.227.154/myflix/videos"
     headers = {}
     payload = json.dumps({ })
 
@@ -47,9 +60,12 @@ def sub_page():
                       name=index[key][key2]
                   if (key2=="thumb"):
                       thumb=index[key][key2]
+                  if (key2=="uuid"):
+                      uuid=index[key][key2]  
               html=html+"<h3>"+name+"</h3>"
-              html=html+'<img src="http://34.88.5.81/pics/'+thumb+'">'
-                      
+              html=html+'<a href="http://34.172.202.172/Video/'+uuid+'">'
+              html=html+'<img src="http://35.228.145.155/pics/'+thumb+'">'
+              html=html+"</a>"        
               print("=======================")
 
     return html
