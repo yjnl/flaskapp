@@ -1,5 +1,4 @@
-db
 requests
 flask
-mysql-connector-python
-mysql
+
+
