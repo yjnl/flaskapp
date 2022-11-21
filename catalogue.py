@@ -80,8 +80,9 @@ def cat_page():
                       thumb=index[key][key2]
                   if (key2=="uuid"):
                       uuid=index[key][key2]  
-
-              html=html+'<a href="http://34.172.202.172/Video/'+uuid+'">'
+              html=html+'<h3>'+name+'</h3>'
+              ServerIP=request.host.split(':')[0]
+              html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
               html=html+'<img src="http://35.228.145.155/pics/'+thumb+'">'
               html=html+"</a>"        
               print("=======================")
