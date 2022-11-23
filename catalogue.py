@@ -11,10 +11,6 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 app = Flask(__name__)
 app.debug = True
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-
 @app.route('/Video/<video>')
 def video_page(video):
     print (video)
@@ -44,11 +40,7 @@ def video_page(video):
                       pic=index[key][key2]
     return render_template('video.html', name=video,file=videofile,pic=pic)
 
-@app.route('/dashboard/<name>')
-def dashboard(name):
-   return 'welcome %s' % name
-
-@app.route('/Cat')
+@app.route('/')
 def cat_page():
     url = "http://34.173.227.154/myflix/videos"
     headers = {}
