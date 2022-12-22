@@ -87,11 +87,13 @@ def cat_page():
                       if (key2=="uuid"):
                           uuid=index[key][key2]
                       if (key2=="category" and index[key][key2] == categ.lower()):
+                          html += '<div style="float: left">'
                           html=html+'<h3>'+name+'</h3>'
                           ServerIP=request.host.split(':')[0]
                           html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
                           html=html+'<img src="http://34.134.202.10/pics/'+thumb+'">'
                           html=html+"</a>"        
+                          html += '</div>'
                           print("=======================")
 
     return html
