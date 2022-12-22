@@ -75,6 +75,7 @@ def cat_page():
         html = html + '<h2>' + categ + '</h2>'
         
         for index in jResp:
+            html += '<h3>' + str(index) + '</h3>'
             #print (json.dumps(index))
             print ("----------------")
             for key in index:
