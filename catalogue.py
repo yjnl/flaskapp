@@ -52,32 +52,49 @@ def cat_page():
     print (response)
     print (response.status_code)
     if response.status_code != 200:
-      print("Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message']))
-      return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
+        print("Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message']))
+        return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
     jResp = response.json()
     print (type(jResp))
-    html="<h2> Your Videos</h2>"
-    for index in jResp:
-       #print (json.dumps(index))
-       print ("----------------")
-       for key in index:
-
-           if (key !="_id"):
-              print (index[key])
-              for key2 in index[key]:
-                  print (key2,index[key][key2])
-                  if (key2=="Name"):
-                      name=index[key][key2]
-                  if (key2=="thumb"):
-                      thumb=index[key][key2]
-                  if (key2=="uuid"):
-                      uuid=index[key][key2]  
-              html=html+'<h3>'+name+'</h3>'
-              ServerIP=request.host.split(':')[0]
-              html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
-              html=html+'<img src="http://34.134.202.10/pics/'+thumb+'">'
-              html=html+"</a>"        
-              print("=======================")
+    
+    # Getting the categories
+    categories = []
+    caturl = "http://34.67.41.89/myflix/categories"
+    catresponse = requests.get(caturl)
+    catjResp = catresponse.json()
+    for catindex in catjResp:
+        for catkey in catindex:
+            if (catkey != "_id"):
+                categories.append(catindex[catkey].capitalize())
+    categories = sorted(categories)
+    
+    html="<h1>MyFlix</h1>"
+    
+    for categ in categories:
+ 
+        html = html + '<h2>' + categ + '</h2>'
+        
+        for index in jResp:
+            #print (json.dumps(index))
+            print ("----------------")
+            for key in index:
+                if (key !="_id"):
+                    print (index[key])
+                    for key2 in index[key]:
+                        print (key2,index[key][key2])
+                        if (key2=="Name"):
+                            name=index[key][key2]
+                        if (key2=="thumb"):
+                            thumb=index[key][key2]
+                        if (key2=="uuid"):
+                            uuid=index[key][key2]
+                        if (key2=="category" and index[key][key2] == categ):
+                            html=html+'<h3>'+name+'</h3>'
+                            ServerIP=request.host.split(':')[0]
+                            html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
+                            html=html+'<img src="http://34.134.202.10/pics/'+thumb+'">'
+                            html=html+"</a>"        
+                            print("=======================")
 
     return html
 
