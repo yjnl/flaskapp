@@ -73,10 +73,10 @@ def cat_page():
     for categ in categories:
     html = html + '<h2>' + categ + '</h2>'
         for index in jResp:
+        html += '<h3>' + index + '</h3>'
             for key in index:
                 if (key !="_id"):
                     for key2 in index[key]:
-                    html += '<h3>' + key2 + '</h3>'
                         if (key2=="Name"):
                             name=index[key][key2]
                         if (key2=="thumb"):
