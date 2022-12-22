@@ -49,6 +49,8 @@ def cat_page():
     # Getting the categories
     categories = []
     caturl = "http://34.67.41.89/myflix/categories"
+    headers = {}
+    payload = json.dumps({ })
     catresponse = requests.get(caturl)
     catjResp = catresponse.json()
     for catindex in catjResp:
