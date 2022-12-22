@@ -42,28 +42,7 @@ def video_page(video):
 
 @app.route('/')
 def cat_page():
-        
-        
-        
-        
-    # Getting the categories
-    categories = []
-    caturl = "http://34.67.41.89/myflix/categories"
-    headers = {}
-    payload = json.dumps({ })
-    catresponse = requests.get(caturl)
-    catjResp = catresponse.json()
-    for catindex in catjResp:
-        for catkey in catindex:
-            if (catkey != "_id"):
-                categories.append(catindex[catkey].capitalize())
-    categories = sorted(categories)
-        
-        
-        
-        
-        
-        
+
     url = "http://34.67.41.89/myflix/videos"
     headers = {}
     payload = json.dumps({ })
@@ -78,11 +57,6 @@ def cat_page():
         return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
     jResp = response.json()
     print (type(jResp))
-    
-    
-
-    
-    
     
     
     
