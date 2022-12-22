@@ -80,7 +80,7 @@ def cat_page():
                if (key !="_id"):
                   print (index[key])
                   for key2 in index[key]:
-                      print (key2,index[key][key2])
+                      html += '<p>' + key2 + index[key][key2] + '</p>'
                       if (key2=="Name"):
                           name=index[key][key2]
                       if (key2=="thumb"):
