@@ -68,13 +68,22 @@ def cat_page():
                 categories.append(catindex[catkey].capitalize())
     categories = sorted(categories)
    
-    html="<h2> Your Videos</h2>"
+    html="<h1>MyFlix</h1>"
     
+    # is this the first category? if so, change the css style
+    firstcat = True
     for categ in categories:
-         
         # is this the first item being added for this category? if so, change the css style
         first = True
-        html += '<h2 style="clear:both">' + categ + '</h2>'
+        
+        if firstcat:
+            html += '<h2 style="clear:both">' + categ + '</h2>'
+            firstcat = False
+        else:
+            
+            html += '<h2 style="clear:both">''</h2>'
+            html += '<h2 style="clear:both">' + categ + '</h2>'
+            
         for index in jResp:
            #print (json.dumps(index))
            print ("----------------")
