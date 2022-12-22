@@ -81,7 +81,7 @@ def cat_page():
             firstcat = False
         else:
             
-            html += '<h2 style="clear:both">''</h2>'
+            html += '<br></br>'
             html += '<h2 style="clear:both">' + categ + '</h2>'
             
         for index in jResp:
