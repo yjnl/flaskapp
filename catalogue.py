@@ -91,7 +91,7 @@ def cat_page():
                           uuid=index[key][key2]
                       if (key2=="category" and index[key][key2] == categ.lower()):
                           if first:
-                            html += '<div style="float: left">'
+                            html += '<div style="clear:both; float: left">'
                             first = False
                           else:
                             html += '<div style="float: none">'
