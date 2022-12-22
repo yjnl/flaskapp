@@ -71,18 +71,12 @@ def cat_page():
     html="<h1>MyFlix</h1>"
     
     for categ in categories:
- 
-        html = html + '<h2>' + categ + '</h2>'
-        
+    html = html + '<h2>' + categ + '</h2>'
         for index in jResp:
-            html += '<h3>' + str(index) + '</h3>'
-            #print (json.dumps(index))
-            print ("----------------")
             for key in index:
                 if (key !="_id"):
-                    print (index[key])
                     for key2 in index[key]:
-                        print (key2,index[key][key2])
+                    html += '<h3>' + key2 + '</h3>'
                         if (key2=="Name"):
                             name=index[key][key2]
                         if (key2=="thumb"):
