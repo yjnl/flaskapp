@@ -42,7 +42,6 @@ def video_page(video):
 
 @app.route('/')
 def cat_page():
-
     url = "http://34.67.41.89/myflix/videos"
     headers = {}
     payload = json.dumps({ })
@@ -57,9 +56,6 @@ def cat_page():
         return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
     jResp = response.json()
     print (type(jResp))
-    
-    
-    
     html="<h2> Your Videos</h2>"
     for index in jResp:
         #print (json.dumps(index))
