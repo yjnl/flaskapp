@@ -71,6 +71,9 @@ def cat_page():
     html="<h2> Your Videos</h2>"
     
     for categ in categories:
+         
+        # is this the first item being added for this category? if so, change the css style
+        first = True
         html += '<h2>' + categ + '</h2>'
         for index in jResp:
            #print (json.dumps(index))
@@ -87,7 +90,12 @@ def cat_page():
                       if (key2=="uuid"):
                           uuid=index[key][key2]
                       if (key2=="category" and index[key][key2] == categ.lower()):
-                          html += '<div style="float: left">'
+                          if first:
+                            html += '<div style="float: right">'
+                            first = False
+                          else:
+                            html += '<div style="float: none">'
+                          
                           html=html+'<h3>'+name+'</h3>'
                           ServerIP=request.host.split(':')[0]
                           html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
