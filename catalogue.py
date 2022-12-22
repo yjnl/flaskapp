@@ -94,7 +94,7 @@ def cat_page():
                             html += '<div style="clear:both; float: left">'
                             first = False
                           else:
-                            html += '<div style="float: none">'
+                            html += '<div style="float: left">'
                           
                           html=html+'<h3>'+name+'</h3>'
                           ServerIP=request.host.split(':')[0]
