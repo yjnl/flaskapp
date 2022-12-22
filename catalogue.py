@@ -74,7 +74,7 @@ def cat_page():
          
         # is this the first item being added for this category? if so, change the css style
         first = True
-        html += '<h2>' + categ + '</h2>'
+        html += '<h2 style="clear:both">' + categ + '</h2>'
         for index in jResp:
            #print (json.dumps(index))
            print ("----------------")
