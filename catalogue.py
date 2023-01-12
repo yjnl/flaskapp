@@ -68,7 +68,7 @@ def cat_page():
                 categories.append(catindex[catkey].capitalize())
     categories = sorted(categories)
    
-    html="<h1>OurFlix</h1>"
+    html="<h1>MyFlix</h1>"
     
     for categ in categories:
         # is this the first item being added for this category? if so, change the css style
